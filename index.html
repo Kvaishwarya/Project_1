@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Responsive Login and Registration Form</title>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="form-box login">
-            <form action="#">
+            <form action="#" id="login-form">
                 <h1>Login</h1>
                 <div class="input-box">
                     <input type="text" placeholder="Username" name="username" required>
                     <i class="bx bxs-user"></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Password" name="password" id="password" required>
-                    <i class="bx bxs-lock-alt"></i>
-                    <i class="bx bx-show toggle-password" id="togglePassword"></i>
+                    <input type="password" placeholder="Password" name="password" required id="login-password">
+                    <i class="bx bxs-lock-alt lock-icon"></i>
+                    <i class="bx bx-show toggle-password"></i>
                 </div>
                 <div class="forgot-link">
-                    <a href="#">Forgot Password?</a>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <p>or login with Google account</p>
@@ -32,10 +32,8 @@
                 </div>
             </form>
         </div>
-        <!--  registration form and toggle panels -->
-        <!--
         <div class="form-box register">
-            <form action="#">
+            <form action="#" id="register-form">
                 <h1>Registration</h1>
                 <div class="input-box">
                     <input type="text" placeholder="Username" name="username" required>
@@ -46,8 +44,9 @@
                     <i class="bx bxs-envelope"></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Password" name="password" required>
-                    <i class="bx bxs-lock-alt"></i>
+                    <input type="password" placeholder="Password" name="password" required id="register-password">
+                    <i class="bx bxs-lock-alt lock-icon"></i>
+                    <i class="bx bx-show toggle-password"></i>
                 </div>
                 <button type="submit" class="btn">Register</button>
                 <p>or register with Google account</p>
@@ -56,23 +55,42 @@
                 </div>
             </form>
         </div>
+        <div class="form-box forgot-password">
+            <form action="#" id="forgot-password-form">
+                <h1>Forgot Password</h1>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" name="email" required>
+                    <i class="bx bxs-envelope"></i>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+                <div class="back-link">
+                    <a href="#" class="back-to-login">Back to Login</a>
+                </div>
+            </form>
+        </div>
         <div class="toggle-box">
             <div class="toggle-panel toggle-left">
                 <div class="panel-content">
                     <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start your journey with us</p>
-                    <button class="btn register-btn">Register</button>
+                    <p>Create your account to get started.</p>
+                    <button class="btn register-btn" id="register-btn">Register</button>
                 </div>
             </div>
             <div class="toggle-panel toggle-right">
                 <div class="panel-content">
                     <h1>Welcome Back!</h1>
-                    <p>Stay connected with us by logging in with your details</p>
-                    <button class="btn login-btn">Already have an account? Login</button>
+                    <p>Already have an account?Log in to continue</p>
+                    <button class="btn login-btn" id="login-btn">Login</button>
+                </div>
+            </div>
+            <div class="toggle-panel toggle-forgot">
+                <div class="panel-content">
+                    <h1>Reset Password</h1>
+                    <p>Enter your email to receive a password reset link</p>
+                    <button class="btn back-to-login-btn" id="back-to-login-btn">Back to Login</button>
                 </div>
             </div>
         </div>
-        -->
     </div>
     <script src="script.js"></script>
 </body>

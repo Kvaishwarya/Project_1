@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+
 * {
     margin: 0;
     padding: 0;
@@ -16,35 +17,78 @@ body {
     background: linear-gradient(135deg, #e0eafc, #cfdef3);
 }
 
-
 .container {
     position: relative;
-    width: 400px;
+    width: 800px;
     max-width: 90vw;
-    height: 520px;
-    background: #ffffff;
+    height: 500px;
+    background: #fff;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: visible;
 }
 
-
 .form-box {
-    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
     height: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 40px;
     background: #fff;
+    z-index: 2;
+    transition: opacity 0.4s ease;
 }
 
-.form-box.login {
+.form-box.active {
     display: flex;
+    opacity: 1;
 }
 
+.form-box:not(.active) {
+    opacity: 0;
+}
+
+.toggle-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+}
+
+.toggle-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, #3498db, #8e44ad);
+    border-radius: 20px 0 0 20px;
+    z-index: -1;
+}
+
+.toggle-panel {
+    position: absolute;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: #fff;
+    transition: opacity 0.4s ease;
+}
+
+.toggle-panel.active {
+    display: flex;
+    opacity: 1;
+}
+
+.toggle-panel:not(.active) {
+    opacity: 0;
+}
 
 form {
     width: 100%;
@@ -53,31 +97,29 @@ form {
 
 h1 {
     font-size: 32px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: #2c3e50;
-    font-weight: 600;
 }
 
 .input-box {
     position: relative;
-    margin: 25px 0;
+    margin: 20px 0;
 }
 
 .input-box input {
     width: 100%;
-    padding: 14px 50px 14px 40px;
+    padding: 12px 60px 12px 15px;
     background: #f7f9fc;
     border: 1px solid #e0e0e0;
-    border-radius: 12px;
+    border-radius: 10px;
     font-size: 16px;
     color: #2c3e50;
     font-weight: 500;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.3s;
 }
 
 .input-box input:focus {
     border-color: #3498db;
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
     outline: none;
 }
 
@@ -94,155 +136,93 @@ h1 {
     color: #7f8c8d;
 }
 
-.input-box i.bxs-user {
-    left: 15px;
+.input-box i.lock-icon {
+    right: 35px;
 }
 
-.input-box i.bxs-lock-alt {
-    left: 15px;
+.input-box i.toggle-password,
+.input-box i.bxs-user,
+.input-box i.bxs-envelope {
+    right: 15px;
 }
 
 .input-box i.toggle-password {
-    right: 15px;
     cursor: pointer;
-    font-size: 18px;
-    color: #7f8c8d;
-    transition: color 0.3s;
 }
 
-.input-box i.toggle-password:hover {
-    color: #3498db;
-}
-
-.forgot-link {
-    margin: 15px 0;
+.forgot-link,
+.back-link {
+    margin: 10px 0;
     text-align: right;
 }
 
-.forgot-link a {
+.forgot-link a,
+.back-link a {
     font-size: 14px;
     color: #3498db;
     text-decoration: none;
-    transition: color 0.3s;
 }
 
-.forgot-link a:hover {
-    color: #2980b9;
+.forgot-link a:hover,
+.back-link a:hover {
     text-decoration: underline;
 }
 
 .btn {
     width: 100%;
-    height: 48px;
+    height: 45px;
     background: #3498db;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
     color: #fff;
     font-weight: 600;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s;
 }
 
 .btn:hover {
     background: #2980b9;
-    transform: translateY(-2px);
 }
 
-.btn:active {
-    transform: translateY(0);
+.panel-content .btn {
+    width: auto;
+    padding: 10px 25px;
+    background: transparent;
+    border: 2px solid #fff;
+    font-size: 15px;
 }
 
-form p {
+.panel-content .btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.container p {
     font-size: 14px;
-    margin: 20px 0;
+    margin: 15px 0;
     color: #7f8c8d;
 }
 
 .social-icons {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .social-icons a {
     display: inline-flex;
-    padding: 12px;
+    padding: 10px;
     border: 1px solid #e0e0e0;
     border-radius: 50%;
-    font-size: 22px;
+    font-size: 20px;
     color: #2c3e50;
     text-decoration: none;
-    margin: 0 8px;
-    transition: background 0.3s, border-color 0.3s;
+    margin: 0 5px;
+    transition: background 0.3s;
 }
 
 .social-icons a:hover {
     background: #e0eafc;
-    border-color: #3498db;
-}
-
-/* Commented out toggle and registration styles */
-/*
-.toggle-box {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    z-index: 1;
-    transition: transform 0.8s ease-in-out;
-}
-
-.toggle-box::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #3498db, #8e44ad);
-    border-radius: 20px 0 0 20px;
-    z-index: -1;
-}
-
-.toggle-panel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    color: #fff;
-    transition: transform 0.8s ease-in-out, opacity 0.4s ease;
-}
-
-.toggle-panel.toggle-left {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.toggle-panel.toggle-right {
-    transform: translateX(100%);
-    opacity: 0;
-}
-
-.container.active .toggle-box {
-    transform: translateX(0);
-}
-
-.container.active .toggle-panel.toggle-left {
-    transform: translateX(-100%);
-    opacity: 0;
-}
-
-.container.active .toggle-panel.toggle-right {
-    transform: translateX(0);
-    opacity: 1;
-    display: flex;
 }
 
 .panel-content {
@@ -262,45 +242,51 @@ form p {
     line-height: 1.5;
     color: #fff;
     max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 25px;
 }
-
-.panel-content .btn {
-    width: auto;
-    padding: 10px 25px;
-    height: 45px;
-    background: transparent;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    font-size: 15px;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.panel-content .btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-*/
-
 
 @media (max-width: 768px) {
     .container {
         width: 90%;
         height: auto;
-        min-height: 520px;
+        min-height: 600px;
+        flex-direction: column;
+        display: flex;
     }
 
     .form-box {
-        padding: 30px;
+        position: relative;
+        width: 100%;
+        padding: 20px;
     }
 
-    h1 {
-        font-size: 28px;
+    .form-box.active {
+        display: flex;
+        opacity: 1;
     }
 
-    .btn {
-        height: 46px;
+    .form-box:not(.active) {
+        display: none;
+        opacity: 0;
+    }
+
+    .toggle-box {
+        width: 100%;
+        height: 200px;
+        position: relative;
+    }
+
+    .toggle-box::before {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .toggle-panel.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .toggle-panel:not(.active) {
+        display: none;
+        opacity: 0;
     }
 }
