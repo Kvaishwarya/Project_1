@@ -1,4 +1,4 @@
-// Select elements
+
 const container = document.querySelector('.container');
 const loginForm = document.querySelector('.form-box.login');
 const registerForm = document.querySelector('.form-box.register');
@@ -7,7 +7,7 @@ const toggleLeft = document.querySelector('.toggle-panel.toggle-left');
 const toggleRight = document.querySelector('.toggle-panel.toggle-right');
 const toggleForgot = document.querySelector('.toggle-panel.toggle-forgot');
 
-// Function to show login panel
+
 function showLogin() {
     console.log('Showing login panel');
     container.classList.remove('active', 'forgot-active');
@@ -32,7 +32,7 @@ function showRegister() {
     toggleForgot.classList.remove('active');
 }
 
-// Function to show forgot password panel
+
 function showForgotPassword() {
     console.log('Showing forgot password panel');
     container.classList.add('forgot-active');
@@ -45,12 +45,9 @@ function showForgotPassword() {
     toggleForgot.classList.add('active');
 }
 
-// Initialize page
 document.addEventListener('DOMContentLoaded', () => {
-    // Set initial state to login
     showLogin();
-
-    // Register button
+    
     const registerBtn = document.querySelector('#register-btn');
     if (registerBtn) {
         registerBtn.addEventListener('click', () => {
@@ -61,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Register button not found');
     }
 
-    // Login button
     const loginBtn = document.querySelector('#login-btn');
     if (loginBtn) {
         loginBtn.addEventListener('click', () => {
@@ -71,8 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error('Login button not found');
     }
-
-    // Forgot password link
     const forgotLink = document.querySelector('.forgot-password');
     if (forgotLink) {
         forgotLink.addEventListener('click', (e) => {
@@ -84,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Forgot password link not found');
     }
 
-    // Back to login buttons
+
     const backToLoginLinks = document.querySelectorAll('.back-to-login, #back-to-login-btn');
     backToLoginLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -93,8 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showLogin();
         });
     });
-
-    // Fallback event delegation
+    
     document.addEventListener('click', (event) => {
         if (event.target.matches('#login-btn') || event.target.closest('.login-btn')) {
             console.log('Login button clicked via delegation');
@@ -109,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Password visibility toggle
+
     document.querySelectorAll('.toggle-password').forEach(icon => {
         icon.addEventListener('click', () => {
             const input = icon.previousElementSibling.previousElementSibling || icon.previousElementSibling;
@@ -125,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form submissions
     document.getElementById('login-form').addEventListener('submit', (e) => {
         e.preventDefault();
         alert('Login submitted successfully!');
